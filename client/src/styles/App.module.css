@@ -1,0 +1,11 @@
+@import "Form.module.css";
+@import "Inventory.module.css";
+@import "Navbar.module.css";
+body {
+    background: linear-gradient(#e66465, #9198e5);
+    font-family: Arial, sans-serif;
+    padding: 10px;
+}
+#root {
+    text-align: center;
+}

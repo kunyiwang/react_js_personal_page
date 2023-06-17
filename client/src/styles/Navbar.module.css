@@ -1,0 +1,15 @@
+.navbar {
+    border-radius: 5px;
+    height: 50px;
+    background-color: #008B8B;
+    color: #00FFFF;
+    padding: 10px;
+    text-align: center;
+    justify-content: center;
+}
+
+.navbar a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+}
