@@ -1,4 +1,4 @@
 export const actionTypes = {
-    GET_USERS: 'items/getUsers',
-    ADD_USER: 'items/addUser'
+    GET_ITEMS: 'items/getItems',
+    ADD_ITEM: 'items/addItem'
 };

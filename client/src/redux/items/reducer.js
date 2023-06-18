@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { REQUEST_STATE } from '../utils';
-import { addUserAsync, getUsersAsync } from './thunks';
+import { addItemAsync, getItemsAsync } from './thunks';
 
 const INITIAL_STATE = {
     list: [],
@@ -15,27 +15,27 @@ const itemsSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(getUsersAsync.pending, (state) => {
+            .addCase(getItemsAsync.pending, (state) => {
                 state.getUsers = REQUEST_STATE.PENDING;
                 state.error = null;
             })
-            .addCase(getUsersAsync.fulfilled, (state, action) => {
+            .addCase(getItemsAsync.fulfilled, (state, action) => {
                 state.getUsers = REQUEST_STATE.FULFILLED;
                 state.list = action.payload;
             })
-            .addCase(getUsersAsync.rejected, (state, action) => {
+            .addCase(getItemsAsync.rejected, (state, action) => {
                 state.getUsers = REQUEST_STATE.REJECTED;
                 state.error = action.error;
             })
-            .addCase(addUserAsync.pending, (state) => {
+            .addCase(addItemAsync.pending, (state) => {
                 state.addUser = REQUEST_STATE.PENDING;
                 state.error = null;
             })
-            .addCase(addUserAsync.fulfilled, (state, action) => {
+            .addCase(addItemAsync.fulfilled, (state, action) => {
                 state.addUser = REQUEST_STATE.FULFILLED;
                 state.list = action.payload;
             })
-            .addCase(addUserAsync.rejected, (state, action) => {
+            .addCase(addItemAsync.rejected, (state, action) => {
                 state.addUser = REQUEST_STATE.REJECTED;
                 state.error = action.error;
             });

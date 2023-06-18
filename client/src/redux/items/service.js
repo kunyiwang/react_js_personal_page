@@ -1,4 +1,4 @@
-const addUser = async (item) => {
+const addItem = async (item) => {
     const response = await fetch('http://localhost:3001/items', {
         method: 'POST',
         headers: {
@@ -16,7 +16,7 @@ const addUser = async (item) => {
     return data;
 };
 
-const getUsers = async () => {
+const getItems = async () => {
     const response = await fetch('http://localhost:3001/items', {
         method: 'GET'
     });
@@ -24,8 +24,8 @@ const getUsers = async () => {
 };
 
 const itemService = {
-    addUser,
-    getUsers
+    addUser: addItem,
+    getUsers: getItems
 };
 
 export default itemService;

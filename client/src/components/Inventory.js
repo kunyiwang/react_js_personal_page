@@ -1,13 +1,13 @@
 import React, {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {getUsersAsync} from "../redux/items/thunks";
+import {getItemsAsync} from "../redux/items/thunks";
 import styles from '../styles/Inventory.module.css';
 const Inventory = () => {
     const items = useSelector(state => state.items.list);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getUsersAsync());
+        dispatch(getItemsAsync());
     }, []);
 
 

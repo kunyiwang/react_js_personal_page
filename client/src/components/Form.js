@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addUserAsync } from '../redux/items/thunks';
+import { addItemAsync } from '../redux/items/thunks';
 import styles from '../styles/Form.module.css';
 const Form = () => {
     const [item, setItem] = useState({ name: '', description: '', price: '', image: '' });
@@ -8,7 +8,7 @@ const Form = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(addUserAsync(item));
+        dispatch(addItemAsync(item));
         setItem({ name: '', description: '', price: '', image: '' });
     };
 
