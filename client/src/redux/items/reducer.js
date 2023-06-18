@@ -1,11 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { REQUEST_STATE } from '../utils';
-import { addItemAsync, getItemsAsync } from './thunks';
+import { addItemAsync, getItemsAsync, deleteItemAsync, deleteItemsAsync} from './thunks';
 
 const INITIAL_STATE = {
     list: [],
-    getUsers: REQUEST_STATE.IDLE,
-    addUser: REQUEST_STATE.IDLE,
+    getItems: REQUEST_STATE.IDLE,
+    addItem: REQUEST_STATE.IDLE,
+    deleteItem: REQUEST_STATE.IDLE,
+    deleteItems: REQUEST_STATE.IDLE,
     error: null
 };
 
@@ -16,27 +18,51 @@ const itemsSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(getItemsAsync.pending, (state) => {
-                state.getUsers = REQUEST_STATE.PENDING;
+                state.getItems = REQUEST_STATE.PENDING;
                 state.error = null;
             })
             .addCase(getItemsAsync.fulfilled, (state, action) => {
-                state.getUsers = REQUEST_STATE.FULFILLED;
+                state.getItems = REQUEST_STATE.FULFILLED;
                 state.list = action.payload;
             })
             .addCase(getItemsAsync.rejected, (state, action) => {
-                state.getUsers = REQUEST_STATE.REJECTED;
+                state.getItems = REQUEST_STATE.REJECTED;
                 state.error = action.error;
             })
             .addCase(addItemAsync.pending, (state) => {
-                state.addUser = REQUEST_STATE.PENDING;
+                state.addItem = REQUEST_STATE.PENDING;
                 state.error = null;
             })
             .addCase(addItemAsync.fulfilled, (state, action) => {
-                state.addUser = REQUEST_STATE.FULFILLED;
+                state.addItem = REQUEST_STATE.FULFILLED;
                 state.list = action.payload;
             })
             .addCase(addItemAsync.rejected, (state, action) => {
-                state.addUser = REQUEST_STATE.REJECTED;
+                state.addItem = REQUEST_STATE.REJECTED;
+                state.error = action.error;
+            })
+            .addCase(deleteItemAsync.pending, (state) => {
+                state.deleteItem = REQUEST_STATE.PENDING;
+                state.error = null;
+            })
+            .addCase(deleteItemAsync.fulfilled, (state, action) => {
+                state.deleteItem = REQUEST_STATE.FULFILLED;
+                state.list = action.payload;
+            })
+            .addCase(deleteItemAsync.rejected, (state, action) => {
+                state.deleteItem = REQUEST_STATE.REJECTED;
+                state.error = action.error;
+            })
+            .addCase(deleteItemsAsync.pending, (state) => {
+                state.deleteItems = REQUEST_STATE.PENDING;
+                state.error = null;
+            })
+            .addCase(deleteItemsAsync.fulfilled, (state, action) => {
+                state.deleteItems = REQUEST_STATE.FULFILLED;
+                state.list = action.payload;
+            })
+            .addCase(deleteItemsAsync.rejected, (state, action) => {
+                state.deleteItems = REQUEST_STATE.REJECTED;
                 state.error = action.error;
             });
     }

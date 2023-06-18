@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {getItemsAsync} from "../redux/items/thunks";
+import {getItemsAsync, deleteItemAsync, deleteItemsAsync} from "../redux/items/thunks";
 import styles from '../styles/Inventory.module.css';
 const Inventory = () => {
     const items = useSelector(state => state.items.list);
@@ -11,12 +11,12 @@ const Inventory = () => {
     }, []);
 
 
-    const handleDelete = (index) => {
-        // dispatch(deleteItem(index));
+    const handleDelete = (item) => {
+        dispatch(deleteItemAsync(item));
     };
 
     const handleDeleteAll = () => {
-        // dispatch(deleteAll());
+        dispatch(deleteItemsAsync());
     };
 
     return (
@@ -28,7 +28,7 @@ const Inventory = () => {
                         <img src={item.image} alt={item.name} width="150" height="150" />
                         <p>{item.description}</p>
                         <p>Price: ${item.price}</p>
-                        <button onClick={() => handleDelete(index)}>X</button>
+                        <button onClick={() => handleDelete(item)}>X</button>
                     </li>
                 ))}
             </ul>

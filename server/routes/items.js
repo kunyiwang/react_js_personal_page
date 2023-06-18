@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const { v4: uuid } = require('uuid');
 
-const items = [
+let items = [
     {
         id: uuid(),
         name: "Pineapple",
@@ -33,5 +33,21 @@ router.post('/', function (req, res, next) {
     items.push(item);
     return res.send(items);
 });
+
+router.delete('/', function (req, res, next) {
+    if (!req.body.name) {
+        return res.status(400).send({ message: 'Item must have a name!' })
+    }
+
+    const id = req.body.id;
+    items = items.filter(item => item.id !== id);
+    return res.send(items);
+});
+
+router.delete('/all', function (req, res, next) {
+    items = [];
+    return res.send(items);
+});
+
 
 module.exports = router;
