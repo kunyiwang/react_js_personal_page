@@ -1,23 +1,30 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteItem, deleteAll } from '../redux/actions';
+import {getUsersAsync} from "../redux/items/thunks";
 import styles from '../styles/Inventory.module.css';
 const Inventory = () => {
-    const items = useSelector(state => state.items);
+    const items = useSelector(state => state.items.list);
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        dispatch(getUsersAsync());
+    }, []);
+
+
     const handleDelete = (index) => {
-        dispatch(deleteItem(index));
+        // dispatch(deleteItem(index));
     };
 
     const handleDeleteAll = () => {
-        dispatch(deleteAll());
+        // dispatch(deleteAll());
     };
 
     return (
         <div>
+            {/*{JSON.stringify(items||'')}*/}
             <ul  className={styles.inventory}>
-                {items.map((item, index) => (
+
+                {[].concat(items).map((item, index) => (
                     <li key={index}  className={styles.inventoryItem}>
                         <h2>{item.name}</h2>
                         <img src={item.image} alt={item.name} width="150" height="150" />

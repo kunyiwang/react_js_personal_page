@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addItem } from '../redux/actions';
+import { addUserAsync } from '../redux/items/thunks';
 import styles from '../styles/Form.module.css';
 const Form = () => {
     const [item, setItem] = useState({ name: '', description: '', price: '', image: '' });
@@ -8,15 +8,21 @@ const Form = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(addItem(item));
+        dispatch(addUserAsync(item));
         setItem({ name: '', description: '', price: '', image: '' });
     };
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     dispatch(addUserAsync(name));
+    //     setName('');
+    // };
 
     const handleChange = (e) => setItem({ ...item, [e.target.name]: e.target.value });
 
     return (
         <div className={styles.form}>
             <form onSubmit={handleSubmit} >
+            {/*<form >*/}
                 <input type="text" name="name" value={item.name} onChange={handleChange} placeholder="Item Name" />
                 <input type="text" name="description" value={item.description} onChange={handleChange} placeholder="Item Description" />
                 <input type="number" name="price" value={item.price} onChange={handleChange} placeholder="Item Price" />

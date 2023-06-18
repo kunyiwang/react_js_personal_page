@@ -1,6 +1,9 @@
-import { createStore } from 'redux';
-import inventoryReducer from './reducers';
+import { configureStore } from '@reduxjs/toolkit';
+import itemsReducer from './items/reducer';
 
-const store = createStore(inventoryReducer);
-
-export default store;
+export const store = configureStore({
+    reducer: {
+        items: itemsReducer
+    },
+    devTools: true
+});
