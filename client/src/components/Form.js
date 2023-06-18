@@ -11,18 +11,12 @@ const Form = () => {
         dispatch(addUserAsync(item));
         setItem({ name: '', description: '', price: '', image: '' });
     };
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     dispatch(addUserAsync(name));
-    //     setName('');
-    // };
 
     const handleChange = (e) => setItem({ ...item, [e.target.name]: e.target.value });
 
     return (
         <div className={styles.form}>
             <form onSubmit={handleSubmit} >
-            {/*<form >*/}
                 <input type="text" name="name" value={item.name} onChange={handleChange} placeholder="Item Name" />
                 <input type="text" name="description" value={item.description} onChange={handleChange} placeholder="Item Description" />
                 <input type="number" name="price" value={item.price} onChange={handleChange} placeholder="Item Price" />

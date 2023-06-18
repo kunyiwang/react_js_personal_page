@@ -11,7 +11,7 @@ export const getUsersAsync = createAsyncThunk(
 
 export const addUserAsync = createAsyncThunk(
     actionTypes.ADD_USER,
-    async (name) => {
-        return await UserService.addUser( name );
+    async (item) => {
+        return await UserService.addUser( item );
     }
 );

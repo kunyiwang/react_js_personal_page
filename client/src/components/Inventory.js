@@ -21,9 +21,7 @@ const Inventory = () => {
 
     return (
         <div>
-            {/*{JSON.stringify(items||'')}*/}
             <ul  className={styles.inventory}>
-
                 {[].concat(items).map((item, index) => (
                     <li key={index}  className={styles.inventoryItem}>
                         <h2>{item.name}</h2>
