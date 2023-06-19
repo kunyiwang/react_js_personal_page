@@ -49,5 +49,21 @@ router.delete('/all', function (req, res, next) {
     return res.send(items);
 });
 
+router.patch('/', function (req, res, next) {
+    if (!req.body.id || !req.body.description) {
+        return res.status(400).send({ message: 'Item ID and new description must be provided!' });
+    }
+
+    const item = items.find(item => item.id === req.body.id);
+
+    if (!item) {
+        return res.status(404).send({ message: 'Item not found!' });
+    }
+
+    item.description = req.body.description;
+
+    return res.send(item);
+});
+
 
 module.exports = router;
