@@ -1,0 +1,97 @@
+.main-container {
+    background-color: rgb(46 56 77 / 30%);
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+}
+.modal-container {
+    width: 670px;
+    height: 400px;
+    gap: 20px;
+    pointer-events: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border: 1px solid;
+    border-radius: 4px;
+    outline: 0;
+    padding: 8px 24px;
+    margin: 0 auto;
+}
+
+.modal-container-sent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    height: 100%;
+    width: 100%;
+    gap: 20px;
+    font-weight: 500;
+    position: absolute;
+    top: 0px;
+}
+
+.modal-image {
+    height: 100px;
+    width: auto;
+}
+.modal-input-label {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-input {
+    width: 350px;
+    height: 35px;
+    font-size: 0.95rem;
+    margin-top: 5px;
+    padding: 10px;
+}
+
+.modal--input-text {
+    font-weight: 410;
+}
+
+.modal-footer-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    width: 82px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 1px;
+    cursor: pointer;
+    font-weight: 500;
+    position: relative;
+    outline: none;
+    gap: 8px;
+    user-select: none;
+    height: 40px;
+    padding: 0 16px;
+    text-decoration: none;
+}
+
+.modal-title-image {
+    display: flex;
+    align-items: stretch;
+}
+
+.modal-button-cancel {
+    margin-left: 20px;
+}
+
+.modal-button-send {
+    color: white;
+}
