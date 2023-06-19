@@ -2,20 +2,26 @@ import React from "react";
 import { useState } from "react";
 import "./Modal.css";
 import img2 from "../resources/image2.svg";
+import {modifyDescriptionAsync} from "../redux/items/thunks";
+import {useDispatch} from "react-redux";
 
 export const Modal = ({ openModal, setOpenModal, item }) => {
   const [input, setInput] = useState("");
-  const [emailSend, setEmailSend] = useState(false);
+  const [contentSend, setContentSend] = useState(false);
+  const dispatch = useDispatch();
 
-  const sendEmail = () => {
-    setEmailSend(true);
+  const sendContent = () => {
+    console.log(input);
+    const updatedItem = {...item, description: input};
+    dispatch(modifyDescriptionAsync(updatedItem));
+    setContentSend(true);
     setTimeout(() => {
       setOpenModal(false);
     }, 2000);
   };
   return (
     <>
-      {!emailSend && (
+      {!contentSend && (
         <div className="main-container">
           <div className="modal-container">
             <h3 className="">DETAILS:</h3>
@@ -29,14 +35,14 @@ export const Modal = ({ openModal, setOpenModal, item }) => {
                 placeholder="Contents"
                 className="modal-input"
                 label={"Input"}
-                type="email"
-                onChange={(input) => setInput(input)}
+                type="content"
+                onChange={(event) => setInput(event.target.value)}
               />
             </div>
             <div>
               <button
                 className="modal-footer-button modal-button-send"
-                onClick={sendEmail}
+                onClick={sendContent}
               >
                 Submit
               </button>
@@ -52,7 +58,7 @@ export const Modal = ({ openModal, setOpenModal, item }) => {
           </div>
         </div>
       )}
-      {emailSend && (
+      {contentSend && (
         <div className="modal-container-sent">
           <img className="modal-image" src={img2} />
           <div className="modal-text">Text submit!</div>

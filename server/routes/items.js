@@ -62,7 +62,7 @@ router.patch('/', function (req, res, next) {
 
     item.description = req.body.description;
 
-    return res.send(item);
+    return res.send(items);
 });
 
 

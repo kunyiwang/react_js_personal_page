@@ -30,3 +30,10 @@ export const deleteItemsAsync = createAsyncThunk(
         return await ItemService.deleteItems();
     }
 );
+
+export const modifyDescriptionAsync = createAsyncThunk(
+    actionTypes.MODIFY_DESCRIPTION,
+    async (item) => {
+        return await ItemService.modifyDescription( item );
+    }
+);

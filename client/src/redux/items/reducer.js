@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { REQUEST_STATE } from '../utils';
-import { addItemAsync, getItemsAsync, deleteItemAsync, deleteItemsAsync} from './thunks';
+import {addItemAsync, getItemsAsync, deleteItemAsync, deleteItemsAsync, modifyDescriptionAsync} from './thunks';
 
 const INITIAL_STATE = {
     list: [],
@@ -8,6 +8,7 @@ const INITIAL_STATE = {
     addItem: REQUEST_STATE.IDLE,
     deleteItem: REQUEST_STATE.IDLE,
     deleteItems: REQUEST_STATE.IDLE,
+    modifyDescription: REQUEST_STATE.IDLE,
     error: null
 };
 
@@ -63,6 +64,18 @@ const itemsSlice = createSlice({
             })
             .addCase(deleteItemsAsync.rejected, (state, action) => {
                 state.deleteItems = REQUEST_STATE.REJECTED;
+                state.error = action.error;
+            })
+            .addCase(modifyDescriptionAsync.pending, (state) => {
+                state.modifyDescription = REQUEST_STATE.PENDING;
+                state.error = null;
+            })
+            .addCase(modifyDescriptionAsync.fulfilled, (state, action) => {
+                state.modifyDescription = REQUEST_STATE.FULFILLED;
+                state.list = action.payload;
+            })
+            .addCase(modifyDescriptionAsync.rejected, (state, action) => {
+                state.modifyDescription = REQUEST_STATE.REJECTED;
                 state.error = action.error;
             });
     }
