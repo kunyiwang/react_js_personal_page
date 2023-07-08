@@ -13,7 +13,7 @@ router.get('/', async function (req, res, next) {
 });
 
 router.post('/', async function (req, res, next) {
-    const item = new Item({id: uuid(), ...req.body});
+    const item = new Item({id: uuid(), date: new Date(), ...req.body});
     items.push(item);
     await item.save();
     return res.send(items);

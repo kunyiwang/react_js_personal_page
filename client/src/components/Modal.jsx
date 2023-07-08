@@ -30,6 +30,12 @@ export const Modal = ({ openModal, setOpenModal, item }) => {
                 {item && item.description}
               </div>
             </div>
+            <h3 className="">CREATE TIME:</h3>
+            <div>
+              <div className="modal-text">
+                {item && item.date}
+              </div>
+            </div>
             <div className="modal-input-label">
               <input
                 placeholder="Contents"

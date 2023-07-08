@@ -8,6 +8,7 @@ mongoose.connect('mongodb+srv://m001-student:m001-mongodb-basics@sandbox.s9inkey
 // create schema
 const itemSchema = new mongoose.Schema({
     id: String,
+    date: String,
     name: String,
     description: String,
     price: Number,
@@ -20,6 +21,7 @@ const Item = mongoose.model('Item', itemSchema);
 let items = [
     {
         id: uuid(),
+        date: new Date(),
         name: "Pineapple",
         description: "Sour",
         price: 10,
@@ -27,6 +29,7 @@ let items = [
     },
     {
         id: uuid(),
+        date: new Date(),
         name: "Banana",
         description: "Useful when you need quick energy supplement",
         price: 3,
