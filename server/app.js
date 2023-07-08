@@ -3,12 +3,18 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
+var mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var itemsRouter = require('./routes/items');
 
 var app = express();
+mongoose.connect('mongodb+srv://m001-student:m001-mongodb-basics@sandbox.s9inkey.mongodb.net/?retryWrites=true&w=majority',
+    { useNewUrlParser: true, useUnifiedTopology: true }
+);
+
+// Use CORS for all routes
 app.use(cors());
 
 app.use(logger('dev'));
