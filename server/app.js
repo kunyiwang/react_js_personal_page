@@ -13,9 +13,11 @@ var app = express();
 mongoose.connect('mongodb+srv://m001-student:m001-mongodb-basics@sandbox.s9inkey.mongodb.net/?retryWrites=true&w=majority',
     { useNewUrlParser: true, useUnifiedTopology: true }
 );
-
+const corsOptions = {
+    origin: "https://inventory-frontend-c9e9.onrender.com", // frontend URI (ReactJS)
+}
 // Use CORS for all routes
-app.use(cors());
+app.use(cors(corsOptions));
 
 app.use(logger('dev'));
 app.use(express.json());
