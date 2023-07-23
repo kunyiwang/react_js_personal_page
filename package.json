@@ -1,0 +1,24 @@
+{
+  "name": "CPSC455_assignment4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install-server": "cd backend && npm install",
+    "start-server": "cd backend && node app.js",
+    "install-client": "cd client && npm install",
+    "build-client": "cd client && npm run build",
+    "start-client": "cd client && npm run start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kunyiwang/CPSC455_assignment3.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kunyiwang/CPSC455_assignment3/issues"
+  },
+  "homepage": "https://github.com/kunyiwang/CPSC455_assignment3#readme"
+}
