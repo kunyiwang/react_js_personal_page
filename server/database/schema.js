@@ -5,6 +5,7 @@ mongoose.connect('mongodb+srv://m001-student:m001-mongodb-basics@sandbox.s9inkey
     { useNewUrlParser: true, useUnifiedTopology: true }
 );
 
+// test
 // create schema
 const itemSchema = new mongoose.Schema({
     id: String,
