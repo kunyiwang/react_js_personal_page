@@ -29,8 +29,5 @@ jobs:
         with:
           node-version: 14
 
-      - name: Install all dependencies
-        run: npm install
-
-      - name: Run Jest Tests
-        run: npm run test
+      - name: Install all dependencies and test
+        run: cd server && npm install && npm run test
